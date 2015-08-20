@@ -52,16 +52,16 @@ define([
                 }
                 return defaults;
             }
-            var url = req.toUrl(name + '.js');
 
+            var url = req.toUrl(name + '.js');
             fetchText(url, function (text) {
-                var code = babel.transform(text, applyOptions(_module.config())).code;
+                var code = babel.transform(text, applyOptions(config.es6)).code;
 
                 if (config.isBuild) {
                     _buildMap[name] = code;
                 }
 
-                onload.fromText(code); 
+                onload.fromText(code);
             });
             //>>excludeEnd('excludeBabel')
         },
